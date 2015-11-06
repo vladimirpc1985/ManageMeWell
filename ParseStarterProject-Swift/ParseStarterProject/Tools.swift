@@ -7,10 +7,33 @@
 //
 
 import Foundation
+import UIKit
+import Parse
 
 
-class Tools{
-
+class Tools: UIViewController
+{
+    required init?(coder aDecoder: NSCoder)
+    {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func showAlert(alertTitle: String, alertMessage: String)
+    {
+        if #available(iOS 8.0, *)
+        {
+            let alertSuccess = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
+            let alertAction = UIAlertAction(title: "Ok", style: .Destructive, handler: nil)
+            alertSuccess.addAction(alertAction)
+            self.presentViewController(alertSuccess, animated:true, completion: nil)
+        }
+        else
+        {
+            // Fallback on earlier versions
+            print(alertTitle + " " + alertMessage)
+        }
+    }
     
 
 

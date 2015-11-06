@@ -23,8 +23,10 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate
     // Labels
     @IBOutlet weak var errorLabel: UILabel!
     
+    // Variables
     var userTypesList = ["Choose user type", "Vendor (provides service)", "Client (requests service)", "Employee"]
     var selectedUserType: String!
+   // var alert = Tools()
     
     
     // Action Buttons
@@ -39,8 +41,10 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate
         self.passwordField.backgroundColor = UIColor.whiteColor()
         self.passwordVerifiedField.backgroundColor = UIColor.whiteColor()
 
-        var isProfileOk = checkProfileInfo()
-        var isPasswordOk = checkPasswordMatches()
+        
+        // Methods
+        let isProfileOk = checkProfileInfo()
+        let isPasswordOk = checkPasswordMatches()
         
         /*
         if self.nameField.text!.isEmpty || self.emailField.text!.isEmpty || self.userIDField.text!.isEmpty || self.passwordField.text!.isEmpty || self.passwordVerifiedField.text!.isEmpty || self.selectedUserType == self.userTypesList[0]
@@ -64,7 +68,6 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate
                 if isSuccessful
                 {
                     // Was succesful the sign up.
-                    // Then, add Name, Cellphone, Company Name, and User type
                     self.addInfoToPFUser(userObject)
                     
                     userObject.saveInBackgroundWithBlock({ (isSuccessful2: Bool, isError2: NSError?) -> Void in
@@ -162,6 +165,7 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate
         if fieldsWithErrors.count > 0
         {
             //print("Alert")
+            
             return false
         }
         else
@@ -186,6 +190,10 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate
         }
     }
     
+    
+    
+    
+    // PickerView Methods
     func numberOfComponentsInPickerView(pickerView: UIPickerView!)->Int
     {
         return 1
@@ -206,6 +214,10 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate
         selectedUserType = userTypesList[row]
     }
 
+    
+    
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
