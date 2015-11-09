@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 import Parse
 
+enum Role {
+    case Client
+    case Vendor
+    case Employee
+}
 
 class Tools: UIViewController
 {
@@ -35,6 +40,30 @@ class Tools: UIViewController
         }
     }
     
-
+    //This function returns the options listed in the table view for a user according to his/her role
+    //role: Employee, Vendor or Client
+    static func setOptions(role: Role)->[String!]
+    {
+        var optionsList : [String!] = []
+        
+        if role == Role.Employee
+        {
+            optionsList = ["My Schedule", "Give Up Shift", "Request Time Off", "Availability"]
+        }
+        else if role == Role.Vendor
+        {
+            optionsList = ["Add Job", "Jobs", "Workers Availability", "Clock In / Clock Out", "Workers"]
+        }
+        else if role == Role.Client
+        {
+            optionsList = ["Create Work Order", "Works"]
+        }
+        else
+        {
+            print("Error: Role type is supposed to be employee, vendor or client.")
+        }
+        
+        return optionsList
+    }
 
 }

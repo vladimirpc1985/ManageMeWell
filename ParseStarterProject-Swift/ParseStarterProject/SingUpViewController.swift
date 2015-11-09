@@ -79,7 +79,8 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate
                             //check if employee
                             //if employee, send request to employer and 
                             //show Alert - request sent to employee, waiting for approval
-                            print("Alert")
+                            print("successful login")
+                            self.performSegueWithIdentifier("loginToMainScreen", sender: self)
                         }
                         else
                         {
@@ -215,7 +216,16 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate
     }
 
     
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "loginToMainScreen"
+        {
+            let svc = segue.destinationViewController as! MainScreenViewController;
+            
+            //userTypePickerView.dataSource?.description ==
+            //svc.selectedRole = Role.Client
+        }
+        
+    }
     
     
     override func viewDidLoad()

@@ -53,6 +53,7 @@ class ViewController: UIViewController {
                     print("Successful Login!")
                     
                    //////////// self.performSegueWithIdentifier("successLogin", sender: self)
+                    self.performSegueWithIdentifier("loginToMainScreen", sender: self)
                 }
                 else
                 {
