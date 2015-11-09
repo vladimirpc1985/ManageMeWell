@@ -20,6 +20,7 @@
 		C73FF75D1BEB0DA600ED8342 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C73FF75C1BEB0DA600ED8342 /* libsqlite3.tbd */; };
 		C73FF75F1BEB1A3800ED8342 /* SingUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73FF75E1BEB1A3800ED8342 /* SingUpViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		C73FF7611BED216C00ED8342 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73FF7601BED216C00ED8342 /* Tools.swift */; settings = {ASSET_TAGS = (); }; };
+		C7A934901BEDAF180037F2AF /* SignUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9348F1BEDAF180037F2AF /* SignUpTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		C73FF75C1BEB0DA600ED8342 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		C73FF75E1BEB1A3800ED8342 /* SingUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpViewController.swift; sourceTree = "<group>"; };
 		C73FF7601BED216C00ED8342 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		C7A9348F1BEDAF180037F2AF /* SignUpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				C7A9348F1BEDAF180037F2AF /* SignUpTableViewCell.swift */,
 				C73FF7601BED216C00ED8342 /* Tools.swift */,
 				C73FF75E1BEB1A3800ED8342 /* SingUpViewController.swift */,
 			);
@@ -217,6 +220,7 @@
 				C73FF75F1BEB1A3800ED8342 /* SingUpViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				C73FF7611BED216C00ED8342 /* Tools.swift in Sources */,
+				C7A934901BEDAF180037F2AF /* SignUpTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
