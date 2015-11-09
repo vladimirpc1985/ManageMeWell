@@ -27,10 +27,8 @@ class ViewController: UIViewController {
                     // The login was successful. Then, go to Control Profile.
                     print("Successful Login!")
                     
-<<<<<<< HEAD
                    //////////// self.performSegueWithIdentifier("successLogin", sender: self)
                     self.performSegueWithIdentifier("loginToMainScreen", sender: self)
-=======
                     
                     
                     
@@ -41,8 +39,6 @@ class ViewController: UIViewController {
                     
                     
                     
-                    
->>>>>>> 2e021c22deaf9c94f8c42c1b5f48eb799df5f6be
                 }
                 else
                 {

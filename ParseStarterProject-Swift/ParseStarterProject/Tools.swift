@@ -33,7 +33,6 @@ class Tools
         }
     }
     
-<<<<<<< HEAD
     //This function returns the options listed in the table view for a user according to his/her role
     //role: Employee, Vendor or Client
     static func setOptions(role: Role)->[String!]
@@ -59,7 +58,6 @@ class Tools
         
         return optionsList
     }
-=======
     
     
     static func getStringFromArray(errors: [String!])->String
@@ -92,6 +90,5 @@ class Tools
 
     
 
->>>>>>> 2e021c22deaf9c94f8c42c1b5f48eb799df5f6be
 
 }

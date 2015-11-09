@@ -31,10 +31,10 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
     @IBAction func signUpAction(sender: AnyObject)
     {
         fillLabelsFields()
-
+        
         let isProfileOk = checkProfileInfo()
         let isPasswordOk = checkPasswordMatches()
-
+        
         if (phoneNumberField != 0)
         {
             if( isProfileOk && isPasswordOk )
@@ -48,36 +48,6 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
                         // Was succesful the sign up. Then, add the rest of the information.
                         self.addInfoToPFUser(userObject)
                         
-<<<<<<< HEAD
-                        if isSuccessful2
-                        {
-                            // Was successful.
-                            
-                            //check if employee
-                            //if employee, send request to employer and 
-                            //show Alert - request sent to employee, waiting for approval
-                            print("successful login")
-                            self.performSegueWithIdentifier("loginToMainScreen", sender: self)
-                        }
-                        else
-                        {
-                            // There is an error.
-                            print(isError2)
-                        }
-                    })
-                    
-                }
-                else
-                {
-                    //There is an error.
-                    print(isError)
-                    
-                    self.errorLabel.text = "Invalid UserID, Password, and/or Email. \n Please, try again."
-                    self.errorLabel.hidden = false
-                    
-                }
-            })
-=======
                         userObject.saveInBackgroundWithBlock({ (isSuccessful2: Bool, isError2: NSError?) -> Void in
                             if isSuccessful2
                             {
@@ -86,9 +56,9 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
                                 {
                                     //if employee, send request to employer and
                                     //show Alert - request sent to employee, waiting for approval
-                                   // Tools.showAlert(self, alertTitle: "Pending Approval!", alertMessage: "Waiting for manager approval.")
+                                    // Tools.showAlert(self, alertTitle: "Pending Approval!", alertMessage: "Waiting for manager approval.")
                                     self.performSegueWithIdentifier("EmployeeGoToLoginPage", sender: self)
-
+                                    
                                 }
                             }
                             else
@@ -110,11 +80,15 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
         {
             // The phone number is incorrect
             Tools.showAlert(self,alertTitle: "Invalid phone number!", alertMessage: "The phone number is incorrect. It must be 10 digits with no spaces, letters, or symbols.")
->>>>>>> 2e021c22deaf9c94f8c42c1b5f48eb799df5f6be
         }
     }
-    
-    
+
+
+
+
+
+
+
     // Create New User.
     func createPFUser()->PFUser
     {
@@ -125,8 +99,8 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
 
         return userObject
     }
-    
-    
+
+
     // Saving information in user.
     func addInfoToPFUser(userObject: PFUser)->PFUser
     {
@@ -138,8 +112,8 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
         
         return userObject
     }
-    
-    
+
+
     func fillLabelsFields()
     {
         nameField = profileInfo[1].informationField.text!
@@ -264,7 +238,10 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
         }
     }
     
-    
+
+
+
+
     // Check that password matchs with re-enter password.
     func checkPasswordMatches()->Bool
     {
@@ -279,7 +256,11 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
             return true
         }
     }
-    
+
+
+
+
+
     
     /************************ PickerView Methods ********************************/
     func numberOfComponentsInPickerView(pickerView: UIPickerView!)->Int
@@ -302,9 +283,17 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
         selectedUserType = userTypesList[row]
     }
 
+
+
+
+
+
+
+
+
     
-<<<<<<< HEAD
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
         if segue.identifier == "loginToMainScreen"
         {
             let svc = segue.destinationViewController as! MainScreenViewController;
@@ -312,14 +301,19 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
             //userTypePickerView.dataSource?.description ==
             //svc.selectedRole = Role.Client
         }
+    }
+
         
-=======
+
+
+        
     /******************************* Populate the Cells ****************************************/
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return inputFields.count
     }
     
+        
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         
@@ -334,7 +328,6 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
         }
         
         return oneCell
->>>>>>> 2e021c22deaf9c94f8c42c1b5f48eb799df5f6be
     }
     
     
@@ -348,3 +341,4 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
         super.didReceiveMemoryWarning()
     }
 }
+
