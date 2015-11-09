@@ -5,73 +5,50 @@ This is the Sign Up page.
 import UIKit
 import Parse
 
-class SingUpViewController: UIViewController, UIPickerViewDelegate
+class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITableViewDelegate
 {
-    // Text Fields
-    @IBOutlet weak var nameField: UITextField!
+    // Text Field Variables
+    var nameField: String = ""
+    var lastNameField: String = ""
+    var emailField: String = ""
+    var companyNameField: String = ""
+    var phoneNumberField: Int! = 0
+    var userIDField: String = ""
+    var passwordField: String = ""
+    var passwordVerifiedField: String = ""
+    var selectedUserType: String!
     
-    @IBOutlet weak var emailField: UITextField!
+    // Conteiners
+    var userTypesList = ["Choose user type", "Vendor (provides service)", "Client (requests service)", "Employee"]
+    var inputFields = ["First Name:", "Last Name:", "Email:", "Company Name:", "Phone Number(10 numbers with no spaces):", "UserName:", "Password:", "Re-enter Password:"]
+    var profileInfo = [SignUpTableViewCell()]
     
-    @IBOutlet weak var userIDField: UITextField!
-    
-    @IBOutlet weak var passwordField: UITextField!
-    
-    @IBOutlet weak var passwordVerifiedField: UITextField!
-    
+    // PickerView
     @IBOutlet weak var userTypePickerView: UIPickerView!
     
-    // Labels
-    @IBOutlet weak var errorLabel: UILabel!
-    
-    // Variables
-    var userTypesList = ["Choose user type", "Vendor (provides service)", "Client (requests service)", "Employee"]
-    var selectedUserType: String!
-   // var alert = Tools()
-    
-    
+
     // Action Buttons
     @IBAction func signUpAction(sender: AnyObject)
     {
-        // By defaul:
-        self.errorLabel.textColor = UIColor.redColor()
-        self.errorLabel.hidden = true
-        self.nameField.backgroundColor = UIColor.whiteColor()
-        self.emailField.backgroundColor = UIColor.whiteColor()
-        self.userIDField.backgroundColor = UIColor.whiteColor()
-        self.passwordField.backgroundColor = UIColor.whiteColor()
-        self.passwordVerifiedField.backgroundColor = UIColor.whiteColor()
+        fillLabelsFields()
 
-        
-        // Methods
         let isProfileOk = checkProfileInfo()
         let isPasswordOk = checkPasswordMatches()
-        
-        /*
-        if self.nameField.text!.isEmpty || self.emailField.text!.isEmpty || self.userIDField.text!.isEmpty || self.passwordField.text!.isEmpty || self.passwordVerifiedField.text!.isEmpty || self.selectedUserType == self.userTypesList[0]
+
+        if (phoneNumberField != 0)
         {
-            // Error! At least one field does not have information.
-            self.errorLabel.text = "All the fields need information"
-            self.errorLabel.hidden = false
-            
-           
-            
-            
-        }
-*/
-        if( isProfileOk && isPasswordOk )
-        {
-            // Each field has information. Then, go to sign up.
-            let userObject = createPFUser()
-            
-            userObject.signUpInBackgroundWithBlock({ (isSuccessful: Bool, isError: NSError?) -> Void in
+            if( isProfileOk && isPasswordOk )
+            {
+                // Each field has information. Then, go to sign up.
+                let userObject = createPFUser()
                 
-                if isSuccessful
-                {
-                    // Was succesful the sign up.
-                    self.addInfoToPFUser(userObject)
-                    
-                    userObject.saveInBackgroundWithBlock({ (isSuccessful2: Bool, isError2: NSError?) -> Void in
+                userObject.signUpInBackgroundWithBlock({ (isSuccessful: Bool, isError: NSError?) -> Void in
+                    if isSuccessful
+                    {
+                        // Was succesful the sign up. Then, add the rest of the information.
+                        self.addInfoToPFUser(userObject)
                         
+<<<<<<< HEAD
                         if isSuccessful2
                         {
                             // Was successful.
@@ -100,73 +77,185 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate
                     
                 }
             })
+=======
+                        userObject.saveInBackgroundWithBlock({ (isSuccessful2: Bool, isError2: NSError?) -> Void in
+                            if isSuccessful2
+                            {
+                                // Was successful.
+                                if self.isEmployee()
+                                {
+                                    //if employee, send request to employer and
+                                    //show Alert - request sent to employee, waiting for approval
+                                   // Tools.showAlert(self, alertTitle: "Pending Approval!", alertMessage: "Waiting for manager approval.")
+                                    self.performSegueWithIdentifier("EmployeeGoToLoginPage", sender: self)
+
+                                }
+                            }
+                            else
+                            {
+                                // There is an error.
+                                print(isError2)
+                            }
+                        })
+                    }
+                    else
+                    {
+                        //There is an error.
+                        print(isError)
+                    }
+                })
+            }
         }
-        
-        
+        else
+        {
+            // The phone number is incorrect
+            Tools.showAlert(self,alertTitle: "Invalid phone number!", alertMessage: "The phone number is incorrect. It must be 10 digits with no spaces, letters, or symbols.")
+>>>>>>> 2e021c22deaf9c94f8c42c1b5f48eb799df5f6be
+        }
     }
     
+    
+    // Create New User.
     func createPFUser()->PFUser
     {
-        //finish
         let userObject = PFUser()
-        userObject.username = self.userIDField.text
-        userObject.email = self.emailField.text
-        userObject.password = self.passwordField.text
+        userObject.username = self.userIDField
+        userObject.email = self.emailField
+        userObject.password = self.passwordField
 
         return userObject
     }
     
     
-    
+    // Saving information in user.
     func addInfoToPFUser(userObject: PFUser)->PFUser
     {
-        userObject["name"] = self.nameField.text
+        userObject["firstName"] = self.nameField
+        userObject["lastName"] = self.lastNameField
+        userObject["phoneNumber"] = self.phoneNumberField
+        userObject["companyName"] = self.companyNameField
+        userObject["role"] = self.selectedUserType
         
         return userObject
     }
     
+    
+    func fillLabelsFields()
+    {
+        nameField = profileInfo[1].informationField.text!
+        lastNameField = profileInfo[2].informationField.text!
+        emailField = profileInfo[3].informationField.text!
+        companyNameField = profileInfo[4].informationField.text!
+       
+        
+        if (profileInfo[5].informationField.text!.isEmpty)
+        {
+            // The string is empty.
+            phoneNumberField = -1
+        }
+        else if (phoneNumberValidate(profileInfo[5].informationField.text!))
+        {
+            // The string is a valid number.
+            phoneNumberField = Int(profileInfo[5].informationField.text!)!
+        }
+        else
+        {
+            // The string is not a valid number.
+            phoneNumberField = 0
+        }
+        
+        userIDField = profileInfo[6].informationField.text!
+        passwordField = profileInfo[7].informationField.text!
+        passwordVerifiedField = profileInfo[8].informationField.text!
+    }
+    
+    
+    // Regular Expression for phone number validation.
+    func phoneNumberValidate(number: String) -> Bool {
+        
+        let phoneREGEX = "^\\d{10}$"
+        
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneREGEX)
+        
+        let ans =  phoneTest.evaluateWithObject(number)
+        
+        return ans
+    }
+    
+    
+    func isEmployee()-> Bool
+    {
+        if selectedUserType == userTypesList[3]
+        {
+            return true
+        }
+        
+        return false
+    }
     
     
     func checkProfileInfo()->Bool
     {
         var fieldsWithErrors : [String!] = []
         
-        if self.nameField.text!.isEmpty
+    
+        if self.nameField == ""
         {
             fieldsWithErrors.append("name")
-            self.nameField.backgroundColor = UIColor.redColor()
         }
         
-       
+        if self.lastNameField == ""
+        {
+            fieldsWithErrors.append("last name")
+        }
         
-        if self.emailField.text!.isEmpty
+        if self.emailField == ""
         {
             fieldsWithErrors.append("email")
-            self.emailField.backgroundColor = UIColor.redColor()
         }
         
-        if self.userIDField.text!.isEmpty
+        if self.companyNameField == ""
+        {
+            if selectedUserType != nil
+            {
+                if selectedUserType == userTypesList[1] || selectedUserType == userTypesList[3]
+                {
+                    fieldsWithErrors.append("company name")
+                }
+            }
+        }
+        
+        if self.phoneNumberField == -1
+        {
+            fieldsWithErrors.append("phone number")
+        }
+        
+        if self.userIDField == ""
         {
             fieldsWithErrors.append("username")
-            self.userIDField.backgroundColor = UIColor.redColor()
         }
         
-        if self.passwordField.text!.isEmpty
+        if self.passwordField == ""
         {
             fieldsWithErrors.append("password")
-            self.passwordField.backgroundColor = UIColor.redColor()
         }
         
-        if self.passwordVerifiedField.text!.isEmpty
+        if self.passwordVerifiedField == ""
         {
             fieldsWithErrors.append("password match")
-            self.passwordVerifiedField.backgroundColor = UIColor.redColor()
         }
+        
+        
+        if  selectedUserType == nil || selectedUserType == userTypesList[0]
+        {
+            fieldsWithErrors.append("user's type")
+        }
+        
+        
         
         if fieldsWithErrors.count > 0
         {
-            //print("Alert")
-            
+            Tools.showAlert(self,alertTitle: "Sign up failed!", alertMessage: Tools.getStringFromArray(fieldsWithErrors) + " are missing.")
             return false
         }
         else
@@ -175,15 +264,15 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate
         }
     }
     
+    
+    // Check that password matchs with re-enter password.
     func checkPasswordMatches()->Bool
     {
-        if self.passwordField.text != self.passwordVerifiedField.text
+        if self.passwordField != self.passwordVerifiedField
         {
             // The password and the password verified texts are not equals.
-            print("Alert")
+            Tools.showAlert(self,alertTitle: "Password mismatches!", alertMessage: " Sorry, the password mismatches.")
             return false
-            //self.errorLabel.text = "Sorry, the password mismatchs. \nPlease, try again."
-            //self.errorLabel.hidden = false
         }
         else
         {
@@ -192,9 +281,7 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate
     }
     
     
-    
-    
-    // PickerView Methods
+    /************************ PickerView Methods ********************************/
     func numberOfComponentsInPickerView(pickerView: UIPickerView!)->Int
     {
         return 1
@@ -216,6 +303,7 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate
     }
 
     
+<<<<<<< HEAD
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "loginToMainScreen"
         {
@@ -225,21 +313,38 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate
             //svc.selectedRole = Role.Client
         }
         
+=======
+    /******************************* Populate the Cells ****************************************/
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return inputFields.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        
+        let oneCell: SignUpTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! SignUpTableViewCell
+    
+        oneCell.informationField.placeholder = inputFields[indexPath.row]
+        profileInfo.append(oneCell)
+        
+        if profileInfo.count == 8 || profileInfo.count == 9
+        {
+            oneCell.informationField.secureTextEntry = true
+        }
+        
+        return oneCell
+>>>>>>> 2e021c22deaf9c94f8c42c1b5f48eb799df5f6be
     }
     
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        // By defaul, I do not want to see the error label.
-        self.errorLabel.hidden = true
-
     }
-
-    override func didReceiveMemoryWarning() {
+    
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
     }
-
-
 }

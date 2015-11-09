@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Parse
 
 enum Role {
     case Client
@@ -16,22 +15,16 @@ enum Role {
     case Employee
 }
 
-class Tools: UIViewController
+class Tools
 {
-    required init?(coder aDecoder: NSCoder)
-    {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    func showAlert(alertTitle: String, alertMessage: String)
+    static func showAlert(uiViewController: UIViewController, alertTitle: String, alertMessage: String)
     {
         if #available(iOS 8.0, *)
         {
             let alertSuccess = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
             let alertAction = UIAlertAction(title: "Ok", style: .Destructive, handler: nil)
             alertSuccess.addAction(alertAction)
-            self.presentViewController(alertSuccess, animated:true, completion: nil)
+            uiViewController.presentViewController(alertSuccess, animated:true, completion: nil)
         }
         else
         {
@@ -40,6 +33,7 @@ class Tools: UIViewController
         }
     }
     
+<<<<<<< HEAD
     //This function returns the options listed in the table view for a user according to his/her role
     //role: Employee, Vendor or Client
     static func setOptions(role: Role)->[String!]
@@ -65,5 +59,39 @@ class Tools: UIViewController
         
         return optionsList
     }
+=======
+    
+    
+    static func getStringFromArray(errors: [String!])->String
+    {
+        var result = ""
+        
+        for(var i=0;i<errors.count - 2;i++)
+        {
+            result += errors[i]
+            result += ", "
+        }
+        
+        if errors.count == 1
+        {
+            result = errors[0]
+        }
+        else
+        {
+            if errors.count == 2
+            {
+                result = errors[0] + " "
+            }
+
+            result += "and " + errors[errors.count - 1]
+        }
+        
+        return result
+    }
+    
+
+    
+
+>>>>>>> 2e021c22deaf9c94f8c42c1b5f48eb799df5f6be
 
 }

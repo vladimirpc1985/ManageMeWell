@@ -13,36 +13,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var passwordField: UITextField!
     
-    
-    // Labels
-    @IBOutlet weak var errorLabel: UILabel!
-    
-
-    
+        
     // Action Buttons
     @IBAction func loginAction(sender: AnyObject)
     {
-        // By defaul:
-        self.errorLabel.textColor = UIColor.redColor()
-        self.errorLabel.hidden = true
-        self.userIDField.backgroundColor = UIColor.whiteColor()
-        self.passwordField.backgroundColor = UIColor.whiteColor()
-        
-        if self.userIDField.text!.isEmpty || self.passwordField.text!.isEmpty
-        {
-            // Error! At least one field does not have information.
-            self.errorLabel.text = "All the fields need information"
-            self.errorLabel.hidden = false
-            
-            
-            if self.userIDField.text!.isEmpty
-            {self.userIDField.backgroundColor = UIColor.redColor()}
-            
-            if self.passwordField.text!.isEmpty
-            {self.passwordField.backgroundColor = UIColor.redColor()}
-            
-        }
-        else
+        if checkLoginInfo()
         {
             // Both fields have information. Then, go to login.
             PFUser.logInWithUsernameInBackground(self.userIDField.text!, password: self.passwordField.text!, block: { (isUser: PFUser?, isError: NSError?) -> Void in
@@ -52,30 +27,63 @@ class ViewController: UIViewController {
                     // The login was successful. Then, go to Control Profile.
                     print("Successful Login!")
                     
+<<<<<<< HEAD
                    //////////// self.performSegueWithIdentifier("successLogin", sender: self)
                     self.performSegueWithIdentifier("loginToMainScreen", sender: self)
+=======
+                    
+                    
+                    
+                    
+                   //////////// self.performSegueWithIdentifier("OjO Identifier Name", sender: self)
+                    
+                    
+                    
+                    
+                    
+                    
+>>>>>>> 2e021c22deaf9c94f8c42c1b5f48eb799df5f6be
                 }
                 else
                 {
                     // Invalid UserID and/or Password.
-                    print(isError)
-                    
-                    self.errorLabel.text = "Invalid Information"
-                    self.errorLabel.hidden = false
-                    
+                   Tools.showAlert(self, alertTitle: "Login failed!", alertMessage: "Invalid userName and / or password.")
                 }
             })
         }
-        
-        
-        
-        
     }
     
     
     
     
     
+    func checkLoginInfo()->Bool
+    {
+        var emptyFields = [String!]()
+        
+        if self.userIDField.text!.isEmpty
+        {
+            emptyFields.append("user name")
+        }
+        
+        if self.passwordField.text!.isEmpty
+        {
+            emptyFields.append("password")
+        }
+        
+        
+        if emptyFields.count > 0
+        {
+            // Error! At least one field does not have information.
+            Tools.showAlert(self, alertTitle: "Missing information!", alertMessage: Tools.getStringFromArray(emptyFields) + " are missing.")
+            return false
+        }
+        else
+        {
+            return false
+        }
+    }
+
     
     
     
@@ -83,9 +91,6 @@ class ViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        // By defaul, I do not want to see the error label. 
-        self.errorLabel.hidden = true
 
     }
 
