@@ -17,6 +17,9 @@ enum Role {
 
 class Tools
 {
+    static var userTypesList = ["Choose user type", "Vendor (provides service)", "Client (requests service)", "Employee"]
+
+    
     static func showAlert(uiViewController: UIViewController, alertTitle: String, alertMessage: String)
     {
         if #available(iOS 8.0, *)

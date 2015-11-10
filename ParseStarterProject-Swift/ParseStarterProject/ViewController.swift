@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var passwordField: UITextField!
     
+    var user : PFUser? = (PFUser.currentUser())
+    
         
     // Action Buttons
     @IBAction func loginAction(sender: AnyObject)
@@ -24,20 +26,11 @@ class ViewController: UIViewController {
                 
                 if isError == nil
                 {
-                    // The login was successful. Then, go to Control Profile.
+                    // The login was successful. Then, go to Main Screen.
                     print("Successful Login!")
                     
-                   //////////// self.performSegueWithIdentifier("successLogin", sender: self)
-                    self.performSegueWithIdentifier("loginToMainScreen", sender: self)
-                    
-                    
-                    
-                    
-                   //////////// self.performSegueWithIdentifier("OjO Identifier Name", sender: self)
-                    
-                    
-                    
-                    
+                    self.user = isUser!
+                    self.performSegueWithIdentifier("logInToMainScreen", sender: self)
                     
                 }
                 else
@@ -52,10 +45,39 @@ class ViewController: UIViewController {
     
     
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "logInToMainScreen"
+        {
+            let svc = segue.destinationViewController as! MainScreenViewController
+            svc.selectedRole = getUserRole()
+        }
+    }
+    
+    func getUserRole()->Role
+    {
+        var userTypesList = Tools.userTypesList
+
+        let role: String = PFUser.currentUser()!["role"] as! String
+       
+        
+        switch role
+        {
+        case "Vendor":
+            return Role.Vendor
+        case userTypesList[2]:
+            return Role.Client
+        case userTypesList[3]:
+            return Role.Employee
+        default:
+            return Role.Client   // This is never executed because it is not true
+        }
+    }
+    
     
     func checkLoginInfo()->Bool
     {
         var emptyFields = [String!]()
+        var result = true
         
         if self.userIDField.text!.isEmpty
         {
@@ -67,19 +89,16 @@ class ViewController: UIViewController {
             emptyFields.append("password")
         }
         
-        
         if emptyFields.count > 0
         {
             // Error! At least one field does not have information.
+            result = false
             Tools.showAlert(self, alertTitle: "Missing information!", alertMessage: Tools.getStringFromArray(emptyFields) + " are missing.")
-            return false
         }
-        else
-        {
-            return false
-        }
+        
+        return result
     }
-
+    
     
     
     
@@ -89,9 +108,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
     }
-
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

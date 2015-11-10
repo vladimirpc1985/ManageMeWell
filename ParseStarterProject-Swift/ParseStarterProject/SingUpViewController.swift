@@ -18,8 +18,8 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
     var passwordVerifiedField: String = ""
     var selectedUserType: String!
     
-    // Conteiners
-    var userTypesList = ["Choose user type", "Vendor (provides service)", "Client (requests service)", "Employee"]
+    // Containers
+    var userTypesList = Tools.userTypesList
     var inputFields = ["First Name:", "Last Name:", "Email:", "Company Name:", "Phone Number(10 numbers with no spaces):", "UserName:", "Password:", "Re-enter Password:"]
     var profileInfo = [SignUpTableViewCell()]
     
@@ -82,9 +82,6 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
             Tools.showAlert(self,alertTitle: "Invalid phone number!", alertMessage: "The phone number is incorrect. It must be 10 digits with no spaces, letters, or symbols.")
         }
     }
-
-
-
 
 
 
@@ -329,6 +326,8 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
         
         return oneCell
     }
+    
+    
     
     
     override func viewDidLoad()

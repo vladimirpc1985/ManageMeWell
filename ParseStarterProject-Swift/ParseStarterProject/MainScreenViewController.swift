@@ -9,20 +9,22 @@
 import UIKit
 import Parse
 
-class MainScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainScreenViewController: UIViewController, UITableViewDelegate , UITableViewDataSource {
 
     var selectedRole : Role!
     var options : [String!] = []
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         selectedRole = Role.Client //set this in the previous view (successful sign in / sign up)
-        options = Tools.setOptions(selectedRole)
+       options = Tools.setOptions(selectedRole)
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
