@@ -19,8 +19,16 @@ class MainScreenViewController: UIViewController, UITableViewDelegate , UITableV
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        selectedRole = Role.Client //set this in the previous view (successful sign in / sign up)
-       options = Tools.setOptions(selectedRole)
+        //selectedRole = Role.Client //set this in the previous view (successful sign in / sign up)
+        
+        do
+        {
+            try self.options = Tools.setOptions(selectedRole)
+        }
+        catch
+        {
+            print("Invalid role.")
+        }
     }
 
     override func didReceiveMemoryWarning()

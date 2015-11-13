@@ -58,7 +58,11 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
                                     //show Alert - request sent to employee, waiting for approval
                                     // Tools.showAlert(self, alertTitle: "Pending Approval!", alertMessage: "Waiting for manager approval.")
                                     self.performSegueWithIdentifier("EmployeeGoToLoginPage", sender: self)
-                                    
+                                }
+                                else
+                                {
+                                    print("Successful sign up!")
+                                    self.performSegueWithIdentifier("signUpToMainScreen", sender: self)
                                 }
                             }
                             else
@@ -83,9 +87,6 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
         }
     }
 
-
-
-
     // Create New User.
     func createPFUser()->PFUser
     {
@@ -96,7 +97,6 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
 
         return userObject
     }
-
 
     // Saving information in user.
     func addInfoToPFUser(userObject: PFUser)->PFUser
@@ -157,7 +157,7 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
     func isEmployee()-> Bool
     {
         if selectedUserType == userTypesList[3]
-        {
+        {//and check if is valid employee (vendor authorized him/her)
             return true
         }
         
@@ -216,13 +216,10 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
             fieldsWithErrors.append("password match")
         }
         
-        
         if  selectedUserType == nil || selectedUserType == userTypesList[0]
         {
             fieldsWithErrors.append("user's type")
         }
-        
-        
         
         if fieldsWithErrors.count > 0
         {
@@ -234,10 +231,6 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
             return true
         }
     }
-    
-
-
-
 
     // Check that password matchs with re-enter password.
     func checkPasswordMatches()->Bool
@@ -253,11 +246,6 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
             return true
         }
     }
-
-
-
-
-
     
     /************************ PickerView Methods ********************************/
     func numberOfComponentsInPickerView(pickerView: UIPickerView!)->Int
@@ -279,37 +267,12 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
     {
         selectedUserType = userTypesList[row]
     }
-
-
-
-
-
-
-
-
-
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        if segue.identifier == "loginToMainScreen"
-        {
-            let svc = segue.destinationViewController as! MainScreenViewController;
-            
-            //userTypePickerView.dataSource?.description ==
-            //svc.selectedRole = Role.Client
-        }
-    }
-
-        
-
-
         
     /******************************* Populate the Cells ****************************************/
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return inputFields.count
     }
-    
         
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
@@ -327,8 +290,14 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
         return oneCell
     }
     
-    
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "signUpToMainScreen"
+        {
+            let svc = segue.destinationViewController as! MainScreenViewController
+            let role: String = PFUser.currentUser()!["role"] as! String
+            svc.selectedRole = Tools.getUserRole(role)
+        }
+    }
     
     override func viewDidLoad()
     {

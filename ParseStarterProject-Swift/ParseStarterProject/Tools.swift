@@ -13,6 +13,7 @@ enum Role {
     case Client
     case Vendor
     case Employee
+    case EmployeePending
 }
 
 class Tools
@@ -38,7 +39,7 @@ class Tools
     
     //This function returns the options listed in the table view for a user according to his/her role
     //role: Employee, Vendor or Client
-    static func setOptions(role: Role)->[String!]
+    static func setOptions(role: Role)throws ->[String!]
     {
         var optionsList : [String!] = []
         
@@ -48,7 +49,7 @@ class Tools
         }
         else if role == Role.Vendor
         {
-            optionsList = ["Add Job", "Jobs", "Workers Availability", "Clock In / Clock Out", "Workers"]
+            optionsList = ["Add Job", "Jobs", "Employees Availability", "Clock In / Clock Out", "Add Employee", "Employees"]
         }
         else if role == Role.Client
         {
@@ -56,7 +57,8 @@ class Tools
         }
         else
         {
-            print("Error: Role type is supposed to be employee, vendor or client.")
+            NSException(name: "InvalidRole", reason: "Role type is supposed to be employee, vendor or client.", userInfo: nil).raise()
+            //print("Error: Role type is supposed to be employee, vendor or client.")
         }
         
         return optionsList
@@ -90,8 +92,17 @@ class Tools
         return result
     }
     
-
-    
-
+    static func getUserRole(role: String!) ->Role
+    {
+        switch role
+        {
+        case userTypesList[1]:
+            return Role.Vendor
+        case userTypesList[3]:
+            return Role.Employee
+        default:
+            return Role.Client
+        }
+    }
 
 }
