@@ -10,10 +10,9 @@ class ViewController: UIViewController {
     
     // Text Fields
     @IBOutlet weak var userIDField: UITextField!
-    
     @IBOutlet weak var passwordField: UITextField!
     
-    var user : PFUser? = (PFUser.currentUser())
+    var user : PFUser? = PFUser.currentUser()
     
         
     // Action Buttons
@@ -31,7 +30,6 @@ class ViewController: UIViewController {
                     
                     self.user = isUser!
                     self.performSegueWithIdentifier("logInToMainScreen", sender: self)
-                    
                 }
                 else
                 {
@@ -42,37 +40,14 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "logInToMainScreen"
         {
             let svc = segue.destinationViewController as! MainScreenViewController
-            svc.selectedRole = getUserRole()
+            let role: String = PFUser.currentUser()!["role"] as! String
+            svc.selectedRole = Tools.getUserRole(role)
         }
     }
-    
-    func getUserRole()->Role
-    {
-        var userTypesList = Tools.userTypesList
-
-        let role: String = PFUser.currentUser()!["role"] as! String
-       
-        
-        switch role
-        {
-        case "Vendor":
-            return Role.Vendor
-        case userTypesList[2]:
-            return Role.Client
-        case userTypesList[3]:
-            return Role.Employee
-        default:
-            return Role.Client   // This is never executed because it is not true
-        }
-    }
-    
     
     func checkLoginInfo()->Bool
     {

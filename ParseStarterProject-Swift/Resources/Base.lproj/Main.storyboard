@@ -163,7 +163,7 @@
                                         <rect key="frame" x="0.0" y="28" width="336" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T81-t6-CSW" id="LTQ-Ra-g8J">
-                                            <rect key="frame" x="0.0" y="0.0" width="336" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="336" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vo8-7M-ve7">
@@ -288,7 +288,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qzl-55-eMI" id="lFv-mG-Iux">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -319,6 +319,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="BxC-F0-Vp4"/>
-        <segue reference="jY9-9Y-kX2"/>
+        <segue reference="3xm-3A-Yg7"/>
     </inferredMetricsTieBreakers>
 </document>
