@@ -51,21 +51,39 @@ class MainScreenViewController: UIViewController, UITableViewDelegate , UITableV
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        /*
-        let userInfo: PFObject = users[indexPath.row] as PFObject
-        let selectedUser = String(userInfo["username"])
+        if selectedRole == Role.Employee
+        {
+            let option = Tools.getEmployeeOption(indexPath.row)
+            
+            var identifier = ""
+            
+            switch option
+            {
+            case EmployeeOptions.MySchedule:
+                break
+            case EmployeeOptions.GiveUpShift:
+                identifier = "mainScreenToGiveUpShift"
+                break
+            case EmployeeOptions.RequestTimeOff:
+                break
+            default://option == EmployeeOptions.Availability
+                break
+            }
+            
+            self.performSegueWithIdentifier(identifier, sender: self)
+            
+            return
+        }
         
-        if isAllUsersList == true
+        if selectedRole == Role.Client
         {
-            addFriend(selectedUser)
+            return
         }
-        else//it is Friends's list
+        
+        if selectedRole == Role.Vendor
         {
-            //go to selected friend's profile
-            selectedFriend = String(userInfo["friendUsername"])
-            self.performSegueWithIdentifier("userToProfile", sender: self)
+            return
         }
-*/
     }
 
 }
