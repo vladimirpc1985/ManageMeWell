@@ -9,9 +9,10 @@
 import UIKit
 import Parse
 
+var selectedRole : Role!
+
 class MainScreenViewController: UIViewController, UITableViewDelegate , UITableViewDataSource {
 
-    var selectedRole : Role!
     var options : [String!] = []
     
     override func viewDidLoad()

@@ -293,9 +293,9 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "signUpToMainScreen"
         {
-            let svc = segue.destinationViewController as! MainScreenViewController
+            //let svc = segue.destinationViewController as! MainScreenViewController
             let role: String = PFUser.currentUser()!["role"] as! String
-            svc.selectedRole = Tools.getUserRole(role)
+            selectedRole = Tools.getUserRole(role)
         }
     }
     

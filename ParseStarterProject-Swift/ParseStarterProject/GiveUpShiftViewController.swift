@@ -8,16 +8,20 @@
 
 import UIKit
 
-class GiveUpShiftViewController: UIViewController {
+class GiveUpShiftViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var messageTextView: UITextView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
-        reset()
+        messageTextView.delegate = self
+        
+        addBordersToUITextView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,11 +31,36 @@ class GiveUpShiftViewController: UIViewController {
     
     @IBAction func sendMessage(sender: AnyObject) {
         
+        do
+        {
+            try sendRequestToVendor()
+            
+            Tools.showAlert(self, alertTitle: "Success!", alertMessage: "Your give-up-shift request message was successfully sent and is pending for approval.")
+        }
+        catch
+        {
+            Tools.showAlert(self, alertTitle: "Send Request Failed!", alertMessage: "Your give-up-shift request message was not sent.")
+        }
     }
     
-    func reset()
+    func addBordersToUITextView()
     {
+        //http://stackoverflow.com/questions/2647164/bordered-uitextview
         
+        self.messageTextView.layer.borderWidth = 1
+        self.messageTextView.layer.borderColor = UIColor.grayColor().CGColor
+        self.messageTextView.layer.cornerRadius = 8
+    }
+    
+    //This function sends a request to give up shift for vendor to approve/decline.
+    func sendRequestToVendor() throws
+    {
+    
+    }
+    
+    //This code clears the textView when user starts editing
+    func textViewDidBeginEditing(textView: UITextView) {
+        self.messageTextView.text = ""
     }
     
     /*
