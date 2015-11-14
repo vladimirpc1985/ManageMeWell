@@ -16,6 +16,14 @@ enum Role {
     case EmployeePending
 }
 
+enum EmployeeOptions
+{
+    case MySchedule
+    case GiveUpShift
+    case RequestTimeOff
+    case Availability
+}
+
 class Tools
 {
     static var userTypesList = ["Choose user type", "Vendor (provides service)", "Client (requests service)", "Employee"]
