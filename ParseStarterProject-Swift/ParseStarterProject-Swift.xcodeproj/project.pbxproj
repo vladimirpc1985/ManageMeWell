@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090BC9D31BF6C804009BAD2A /* GiveUpShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BC9D21BF6C804009BAD2A /* GiveUpShiftViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		091FA4731BEDB93C00F665B5 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091FA4721BEDB93C00F665B5 /* MainScreenViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		090BC9D21BF6C804009BAD2A /* GiveUpShiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveUpShiftViewController.swift; sourceTree = "<group>"; };
 		091FA4721BEDB93C00F665B5 /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				090BC9D21BF6C804009BAD2A /* GiveUpShiftViewController.swift */,
 				C7A9348F1BEDAF180037F2AF /* SignUpTableViewCell.swift */,
 				C73FF7601BED216C00ED8342 /* Tools.swift */,
 				091FA4721BEDB93C00F665B5 /* MainScreenViewController.swift */,
@@ -225,6 +228,7 @@
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				C73FF7611BED216C00ED8342 /* Tools.swift in Sources */,
 				C7A934901BEDAF180037F2AF /* SignUpTableViewCell.swift in Sources */,
+				090BC9D31BF6C804009BAD2A /* GiveUpShiftViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
