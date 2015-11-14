@@ -311,6 +311,9 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="U1j-Lm-doq" kind="show" identifier="mainScreenToGiveUpShift" id="bXD-2m-f4h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9In-Ns-seM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -336,7 +339,11 @@
                                 <items>
                                     <navigationItem title="Give Up Shift" id="bpF-4i-r24">
                                         <barButtonItem key="leftBarButtonItem" title="Go Back" id="NR8-1L-hKR"/>
-                                        <barButtonItem key="rightBarButtonItem" title="SignOut" id="wMo-CA-9RW"/>
+                                        <barButtonItem key="rightBarButtonItem" title="SignOut" id="wMo-CA-9RW">
+                                            <connections>
+                                                <segue destination="BYZ-38-t0r" kind="show" id="KjC-hs-KT0"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -392,11 +399,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ol-oj-zz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1036" y="1033"/>
+            <point key="canvasLocation" x="1055" y="1033"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BxC-F0-Vp4"/>
         <segue reference="3xm-3A-Yg7"/>
+        <segue reference="KjC-hs-KT0"/>
     </inferredMetricsTieBreakers>
 </document>

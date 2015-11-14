@@ -27,7 +27,9 @@ enum EmployeeOptions
 class Tools
 {
     static var userTypesList = ["Choose user type", "Vendor (provides service)", "Client (requests service)", "Employee"]
-
+    static var employeeOptions : [String!] = ["My Schedule", "Give Up Shift", "Request Time Off", "Availability"]
+    static var vendorOptions : [String!] = ["Add Job", "Jobs", "Employees Availability", "Clock In / Clock Out", "Add Employee", "Employees"]
+    static var clientOptions : [String!] = ["Create Work Order", "Works"]
     
     static func showAlert(uiViewController: UIViewController, alertTitle: String, alertMessage: String)
     {
@@ -45,6 +47,26 @@ class Tools
         }
     }
     
+    static func getEmployeeOption(pos: Int)->EmployeeOptions
+    {
+        if pos < 1 || pos > employeeOptions.count
+        {
+            NSException(name: "OutOfRangeException", reason: "Parameter pos cannot be less than 1.", userInfo: nil).raise()
+        }
+        
+        switch pos
+        {
+        case 0:
+            return EmployeeOptions.MySchedule
+        case 1:
+            return EmployeeOptions.GiveUpShift
+        case 2:
+            return EmployeeOptions.RequestTimeOff
+        default:
+            return EmployeeOptions.Availability
+        }
+    }
+    
     //This function returns the options listed in the table view for a user according to his/her role
     //role: Employee, Vendor or Client
     static func setOptions(role: Role)throws ->[String!]
@@ -53,19 +75,22 @@ class Tools
         
         if role == Role.Employee
         {
-            optionsList = ["My Schedule", "Give Up Shift", "Request Time Off", "Availability"]
+            //optionsList = ["My Schedule", "Give Up Shift", "Request Time Off", "Availability"]
+            optionsList = employeeOptions
         }
         else if role == Role.Vendor
         {
-            optionsList = ["Add Job", "Jobs", "Employees Availability", "Clock In / Clock Out", "Add Employee", "Employees"]
+            //optionsList = ["Add Job", "Jobs", "Employees Availability", "Clock In / Clock Out", "Add Employee", "Employees"]
+            optionsList = vendorOptions
         }
         else if role == Role.Client
         {
-            optionsList = ["Create Work Order", "Works"]
+            //optionsList = ["Create Work Order", "Works"]
+            optionsList = clientOptions
         }
         else
         {
-            NSException(name: "InvalidRole", reason: "Role type is supposed to be employee, vendor or client.", userInfo: nil).raise()
+            NSException(name: "ArgumentException", reason: "Role type is supposed to be employee, vendor or client.", userInfo: nil).raise()
             //print("Error: Role type is supposed to be employee, vendor or client.")
         }
         

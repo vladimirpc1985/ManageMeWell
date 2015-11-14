@@ -53,6 +53,25 @@ class MainScreenViewController: UIViewController, UITableViewDelegate , UITableV
     {
         if selectedRole == Role.Employee
         {
+            let option = Tools.getEmployeeOption(indexPath.row)
+            
+            var identifier = ""
+            
+            switch option
+            {
+            case EmployeeOptions.MySchedule:
+                break
+            case EmployeeOptions.GiveUpShift:
+                identifier = "mainScreenToGiveUpShift"
+                break
+            case EmployeeOptions.RequestTimeOff:
+                break
+            default://option == EmployeeOptions.Availability
+                break
+            }
+            
+            self.performSegueWithIdentifier(identifier, sender: self)
+            
             return
         }
         
