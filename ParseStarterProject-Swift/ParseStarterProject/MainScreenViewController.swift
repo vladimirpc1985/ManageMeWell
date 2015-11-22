@@ -9,11 +9,16 @@
 import UIKit
 import Parse
 
+var selectedRole : Role!
+
 class MainScreenViewController: UIViewController, UITableViewDelegate , UITableViewDataSource {
 
+<<<<<<< HEAD
     @IBOutlet weak var tableView: UITableView!
     
     var selectedRole : Role!
+=======
+>>>>>>> 45ad2da3e49a34b97126d00aaecf7829d537cfad
     var options : [String!] = []
     
     override func viewDidLoad()
@@ -62,6 +67,25 @@ class MainScreenViewController: UIViewController, UITableViewDelegate , UITableV
         
         if selectedRole == Role.Employee
         {
+            let option = Tools.getEmployeeOption(indexPath.row)
+            
+            var identifier = ""
+            
+            switch option
+            {
+            case EmployeeOptions.MySchedule:
+                break
+            case EmployeeOptions.GiveUpShift:
+                identifier = "mainScreenToGiveUpShift"
+                break
+            case EmployeeOptions.RequestTimeOff:
+                break
+            default://option == EmployeeOptions.Availability
+                break
+            }
+            
+            self.performSegueWithIdentifier(identifier, sender: self)
+            
             return
         }
         

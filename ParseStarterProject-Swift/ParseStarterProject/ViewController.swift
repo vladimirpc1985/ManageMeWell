@@ -43,9 +43,9 @@ class ViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "logInToMainScreen"
         {
-            let svc = segue.destinationViewController as! MainScreenViewController
+            //let svc = segue.destinationViewController as! MainScreenViewController
             let role: String = PFUser.currentUser()!["role"] as! String
-            svc.selectedRole = Tools.getUserRole(role)
+            selectedRole = Tools.getUserRole(role)
         }
     }
     
