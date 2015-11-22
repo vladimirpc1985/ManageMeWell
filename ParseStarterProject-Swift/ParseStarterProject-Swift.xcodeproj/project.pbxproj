@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		090BC9D31BF6C804009BAD2A /* GiveUpShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BC9D21BF6C804009BAD2A /* GiveUpShiftViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		091FA4731BEDB93C00F665B5 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091FA4721BEDB93C00F665B5 /* MainScreenViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		09F194271C015F8500947FB8 /* RequestTimeOffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F194261C015F8500947FB8 /* RequestTimeOffViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		09F194291C0161C100947FB8 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F194281C0161C100947FB8 /* ScheduleViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		09F1942B1C01A36A00947FB8 /* AddWorkOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F1942A1C01A36A00947FB8 /* AddWorkOrderViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
@@ -19,15 +22,25 @@
 		81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81781A49E0DB00E65899 /* AudioToolbox.framework */; };
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
+		C70886B81BFF660D0037AAB5 /* JobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70886B71BFF660D0037AAB5 /* JobViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		C70886BA1BFF6A570037AAB5 /* forgotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70886B91BFF6A570037AAB5 /* forgotPassViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		C70886BC1BFFB07C0037AAB5 /* JobsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70886BB1BFFB07C0037AAB5 /* JobsCell.swift */; settings = {ASSET_TAGS = (); }; };
+		C70886C01C01AB4C0037AAB5 /* EmployeesAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70886BF1C01AB4C0037AAB5 /* EmployeesAvailabilityViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		C70886C21C01AEBC0037AAB5 /* ClockInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70886C11C01AEBC0037AAB5 /* ClockInViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		C73FF75D1BEB0DA600ED8342 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C73FF75C1BEB0DA600ED8342 /* libsqlite3.tbd */; };
 		C73FF75F1BEB1A3800ED8342 /* SingUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73FF75E1BEB1A3800ED8342 /* SingUpViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		C73FF7611BED216C00ED8342 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73FF7601BED216C00ED8342 /* Tools.swift */; settings = {ASSET_TAGS = (); }; };
+		C79D96841BF6D143008A85B6 /* NewJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79D96831BF6D143008A85B6 /* NewJobViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		C79D96861BF6FA25008A85B6 /* NewJobCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79D96851BF6FA25008A85B6 /* NewJobCell.swift */; settings = {ASSET_TAGS = (); }; };
 		C7A934901BEDAF180037F2AF /* SignUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A9348F1BEDAF180037F2AF /* SignUpTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		090BC9D21BF6C804009BAD2A /* GiveUpShiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveUpShiftViewController.swift; sourceTree = "<group>"; };
 		091FA4721BEDB93C00F665B5 /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		09F194261C015F8500947FB8 /* RequestTimeOffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTimeOffViewController.swift; sourceTree = "<group>"; };
+		09F194281C0161C100947FB8 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		09F1942A1C01A36A00947FB8 /* AddWorkOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWorkOrderViewController.swift; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		814C3AC91B69877600E307BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,9 +56,16 @@
 		81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		C70886B71BFF660D0037AAB5 /* JobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobViewController.swift; sourceTree = "<group>"; };
+		C70886B91BFF6A570037AAB5 /* forgotPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = forgotPassViewController.swift; path = ../forgotPassViewController.swift; sourceTree = "<group>"; };
+		C70886BB1BFFB07C0037AAB5 /* JobsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobsCell.swift; sourceTree = "<group>"; };
+		C70886BF1C01AB4C0037AAB5 /* EmployeesAvailabilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeesAvailabilityViewController.swift; sourceTree = "<group>"; };
+		C70886C11C01AEBC0037AAB5 /* ClockInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockInViewController.swift; sourceTree = "<group>"; };
 		C73FF75C1BEB0DA600ED8342 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		C73FF75E1BEB1A3800ED8342 /* SingUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingUpViewController.swift; sourceTree = "<group>"; };
 		C73FF7601BED216C00ED8342 /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		C79D96831BF6D143008A85B6 /* NewJobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJobViewController.swift; sourceTree = "<group>"; };
+		C79D96851BF6FA25008A85B6 /* NewJobCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJobCell.swift; sourceTree = "<group>"; };
 		C7A9348F1BEDAF180037F2AF /* SignUpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,11 +120,21 @@
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				C70886C11C01AEBC0037AAB5 /* ClockInViewController.swift */,
+				C70886BF1C01AB4C0037AAB5 /* EmployeesAvailabilityViewController.swift */,
+				09F1942A1C01A36A00947FB8 /* AddWorkOrderViewController.swift */,
+				09F194261C015F8500947FB8 /* RequestTimeOffViewController.swift */,
+				09F194281C0161C100947FB8 /* ScheduleViewController.swift */,
+				C70886B71BFF660D0037AAB5 /* JobViewController.swift */,
+				C70886BB1BFFB07C0037AAB5 /* JobsCell.swift */,
+				C79D96831BF6D143008A85B6 /* NewJobViewController.swift */,
+				C79D96851BF6FA25008A85B6 /* NewJobCell.swift */,
 				090BC9D21BF6C804009BAD2A /* GiveUpShiftViewController.swift */,
 				C7A9348F1BEDAF180037F2AF /* SignUpTableViewCell.swift */,
-				C73FF7601BED216C00ED8342 /* Tools.swift */,
 				091FA4721BEDB93C00F665B5 /* MainScreenViewController.swift */,
 				C73FF75E1BEB1A3800ED8342 /* SingUpViewController.swift */,
+				C70886B91BFF6A570037AAB5 /* forgotPassViewController.swift */,
+				C73FF7601BED216C00ED8342 /* Tools.swift */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -223,11 +253,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				091FA4731BEDB93C00F665B5 /* MainScreenViewController.swift in Sources */,
+				C70886C01C01AB4C0037AAB5 /* EmployeesAvailabilityViewController.swift in Sources */,
+				C79D96841BF6D143008A85B6 /* NewJobViewController.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
+				C70886BC1BFFB07C0037AAB5 /* JobsCell.swift in Sources */,
+				C70886BA1BFF6A570037AAB5 /* forgotPassViewController.swift in Sources */,
+				09F194291C0161C100947FB8 /* ScheduleViewController.swift in Sources */,
+				09F1942B1C01A36A00947FB8 /* AddWorkOrderViewController.swift in Sources */,
 				C73FF75F1BEB1A3800ED8342 /* SingUpViewController.swift in Sources */,
+				C70886C21C01AEBC0037AAB5 /* ClockInViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				C73FF7611BED216C00ED8342 /* Tools.swift in Sources */,
+				C79D96861BF6FA25008A85B6 /* NewJobCell.swift in Sources */,
+				09F194271C015F8500947FB8 /* RequestTimeOffViewController.swift in Sources */,
 				C7A934901BEDAF180037F2AF /* SignUpTableViewCell.swift in Sources */,
+				C70886B81BFF660D0037AAB5 /* JobViewController.swift in Sources */,
 				090BC9D31BF6C804009BAD2A /* GiveUpShiftViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

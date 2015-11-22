@@ -26,6 +26,8 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
     // PickerView
     @IBOutlet weak var userTypePickerView: UIPickerView!
     
+    // Table View Variable
+    @IBOutlet weak var tableView: UITableView!
 
     // Action Buttons
     @IBAction func signUpAction(sender: AnyObject)
@@ -302,6 +304,9 @@ class SingUpViewController: UIViewController, UIPickerViewDelegate, UINavigation
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        // Avoid the cells' seperator lines.
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
     override func didReceiveMemoryWarning()

@@ -11,14 +11,18 @@ import Parse
 
 class MainScreenViewController: UIViewController, UITableViewDelegate , UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     var selectedRole : Role!
     var options : [String!] = []
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        // Avoid the cells' seperator lines.
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        
         //selectedRole = Role.Client //set this in the previous view (successful sign in / sign up)
         
         do
@@ -49,8 +53,13 @@ class MainScreenViewController: UIViewController, UITableViewDelegate , UITableV
         return options.count
     }
     
+    
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
+        let selectedCell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        
+        
         if selectedRole == Role.Employee
         {
             return
@@ -63,8 +72,32 @@ class MainScreenViewController: UIViewController, UITableViewDelegate , UITableV
         
         if selectedRole == Role.Vendor
         {
+
+            selectedOptionRow(selectedCell)
             return
         }
     }
+    
+    func selectedOptionRow(selectedCell: UITableViewCell)
+    {
+        if selectedCell.textLabel!.text == options[0]
+        {
+            self.performSegueWithIdentifier("IdentifierFromMainScreenToNewJob", sender: self)
+        }
+        else if selectedCell.textLabel!.text == options[1]
+        {
+            self.performSegueWithIdentifier("IdentifierFromMainScreenToJobs", sender: self)
+        }
+        else if selectedCell.textLabel!.text == options[2]
+        {}
+        else if selectedCell.textLabel!.text == options[3]
+        {}
+        else if selectedCell.textLabel!.text == options[4]
+        {}
+        else
+        {}
+    }
+    
+    
 
 }

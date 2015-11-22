@@ -26,6 +26,7 @@ enum EmployeeOptions
 
 class Tools
 {
+    static var green:UIColor = UIColor(red: 0.251, green: 0.831, blue: 0.494, alpha: 1)
     static var userTypesList = ["Choose user type", "Vendor (provides service)", "Client (requests service)", "Employee"]
 
     
